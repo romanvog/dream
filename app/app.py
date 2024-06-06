@@ -19,11 +19,6 @@ def get_user_id(user_id):
     user_data = [item for item in response if item['userId'] == int(user_id)]
     return user_data
 
-@app.route('/foo')
-def test():
-    response = requests.get('https://jsonplaceholder.typicode.com/todos').json()
-    user_data = [item for item in response if item['userId'] == 1]
-    return user_data
 
 if __name__ == '__main__':
     app.run(port=8080, debug=True, host='0.0.0.0')
