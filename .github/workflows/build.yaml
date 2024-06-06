@@ -20,7 +20,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build Docker image
-        run: docker build -t romanvog/dreamapp:latest .
+        run: docker build -t romanvog/dreamapp:latest app
 
       - name: Push Docker image
-        run: docker push romanvog/dreamapp:latest .
+        run: docker push romanvog/dreamapp:latest
