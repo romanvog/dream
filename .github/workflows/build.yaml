@@ -69,6 +69,7 @@ jobs:
           comment: "Apply Run from GitHub Actions CI ${{ github.sha }}"
   deploy:
     name: "Deploy a new image"
+    needs: [terraform]
     runs-on: ubuntu-latest
     steps:
       - name: Deploy
