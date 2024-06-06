@@ -1,6 +1,6 @@
 services:
-  web: 
-    build: app
+  web:
+    image: romanvog/dreamapp
     stop_signal: SIGINT
     ports:
-      - '8080:8080'
+      - '80:8080'
