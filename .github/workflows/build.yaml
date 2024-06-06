@@ -53,6 +53,7 @@ jobs:
           directory: 'terraform'
 
       - name: Create Apply Run
+        if: steps.apply-upload.outcome == 'success'
         uses: hashicorp/tfc-workflows-github/actions/create-run@v1.0.0
         id: apply-run
         with:
