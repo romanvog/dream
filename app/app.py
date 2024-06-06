@@ -8,6 +8,10 @@ app = Flask(__name__)
 def hello():
     return 'Hi there!'
 
+@app.route('/romantest')
+def google():
+    return redirect("https://stackoverflow.com/questions/14343812/redirecting-to-url-in-flask", code=302)
+
 @app.route('/json')
 def get_json():
     response = requests.get('https://jsonplaceholder.typicode.com/todos')
