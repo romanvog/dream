@@ -14,7 +14,7 @@ env:
 
 jobs:
   build:
-    name: "Docker build"
+    name: "Create new image"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -43,13 +43,14 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: romanvog/dreamtf
+          path: 'terraform'
 
       - name: Upload Configuration
         uses: hashicorp/tfc-workflows-github/actions/upload-configuration@v1.0.0
         id: apply-upload
         with:
           workspace: ${{ env.TF_WORKSPACE }}
-          directory: ${{ github.workspace }}
+          directory: 'terraform'
 
       - name: Create Apply Run
         uses: hashicorp/tfc-workflows-github/actions/create-run@v1.0.0
