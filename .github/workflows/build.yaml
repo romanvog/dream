@@ -81,6 +81,6 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           port: 22
           script: |
-            docker-compose -f /home/ubuntu/dream up -d --force-recreate
+            docker-compose -f /home/ubuntu/dream/compose.yaml up -d --force-recreate
             
 
