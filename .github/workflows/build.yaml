@@ -33,6 +33,7 @@ jobs:
         run: docker push romanvog/dreamapp:latest
   terraform:
     name: "Terraform Apply"
+    needs: [build]
     runs-on: ubuntu-latest
     permissions:
       contents: read
