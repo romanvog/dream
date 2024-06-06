@@ -14,7 +14,7 @@ env:
 
 jobs:
   build:
-    name: "Create new image"
+    name: "Create a new image"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -33,7 +33,7 @@ jobs:
         run: docker push romanvog/dreamapp:latest
 
   terraform:
-    name: "Create EC2 instance"
+    name: "Create an EC2 instance"
     needs: [build]
     runs-on: ubuntu-latest
     permissions:
@@ -67,4 +67,18 @@ jobs:
         with:
           run: ${{ steps.apply-run.outputs.run_id }}
           comment: "Apply Run from GitHub Actions CI ${{ github.sha }}"
+  deploy:
+    name: "Deploy a new image"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy
+        uses: appleboy/ssh-action@master
+        with:
+          host: '54.210.101.116'
+          username: ubuntu
+          key: ${{ secrets.EC2_SSH_KEY }}
+          port: 22
+          script: |
+            docker-compose -f /home/ubuntu/dream up -d --force-recreate
+            
 
