@@ -13,7 +13,7 @@ provider "aws" {
 }
 
 resource "aws_instance" "dreamapp" {
-  ami           = "ami-0c55b159cbfafe1f0"
+  ami           = "ami-04b70fa74e45c3917"
   instance_type = "t2.micro"
 
   tags = {
